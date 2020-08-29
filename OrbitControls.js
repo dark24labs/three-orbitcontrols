@@ -33,6 +33,10 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.minDistance = 0;
 	this.maxDistance = Infinity;
 
+	this.maxPositionX = Infinity;
+	this.maxPositionY = Infinity;
+	this.maxPositionZ = Infinity;
+
 	// How far you can zoom in and out ( OrthographicCamera only )
 	this.minZoom = 0;
 	this.maxZoom = Infinity;
@@ -184,8 +188,17 @@ THREE.OrbitControls = function ( object, domElement ) {
 			// restrict radius to be between desired limits
 			spherical.radius = Math.max( scope.minDistance, Math.min( scope.maxDistance, spherical.radius ) );
 
-			// move target to panned location
+			//position limits
+			if ( scope.target.x+panOffset.x < -scope.maxPositionX ) panOffset.x = -scope.maxPositionX-scope.target.x;
+			if ( scope.target.x+panOffset.x > scope.maxPositionX ) panOffset.x = scope.maxPositionX-scope.target.x;
 
+			if ( scope.target.y+panOffset.y < -scope.maxPositionY ) panOffset.y = -scope.maxPositionY-scope.target.y;
+			if ( scope.target.y+panOffset.y > scope.maxPositionY ) panOffset.y = scope.maxPositionY-scope.target.y;
+	
+			if ( scope.target.z+panOffset.z < -scope.maxPositionZ ) panOffset.z = -scope.maxPositionZ-scope.target.z;
+			if ( scope.target.z+panOffset.z > scope.maxPositionZ ) panOffset.z = scope.maxPositionZ-scope.target.z;
+
+			// move target to panned location
 			if ( scope.enableDamping === true ) {
 
 				scope.target.addScaledVector( panOffset, scope.dampingFactor );
