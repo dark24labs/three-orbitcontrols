@@ -1,8 +1,5 @@
 {
 	"name": "three-orbitcontrols",
-	"peerDependencies": {
-		"three": ">= 0.110.0"
-	},
 	"main": "OrbitControls.js",
 	"files": [
 		"OrbitControls.js"
