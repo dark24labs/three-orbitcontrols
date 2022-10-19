@@ -838,6 +838,26 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 				switch ( scope.mouseButtons.MIDDLE ) {
 
+					case THREE.MOUSE.ROTATE:
+
+						if ( scope.enableRotate === false ) return;
+
+						handleMouseDownRotate( event );
+
+						state = STATE.ROTATE;
+
+						break;
+
+					case THREE.MOUSE.PAN:
+
+						if ( scope.enablePan === false ) return;
+
+						handleMouseDownPan( event );
+
+						state = STATE.PAN;
+
+						break;
+
 					case THREE.MOUSE.DOLLY:
 
 						if ( scope.enableZoom === false ) return;
