@@ -109,6 +109,18 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 	};
 
+	this.rotateLeft = function () {
+		rotateLeft(getAutoRotationAngle() * 10);
+
+		this.update();
+	};
+
+	this.rotateRight = function () {
+		rotateLeft(-getAutoRotationAngle() * 10);
+
+		this.update();
+	};
+
 	this.zoomIn = function () {
 
 		dollyOut( getZoomScale() );
