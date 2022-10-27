@@ -109,6 +109,22 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 	};
 
+	this.zoomIn = function () {
+
+		dollyOut( getZoomScale() );
+
+		this.update();
+
+	};
+
+	this.zoomOut = function () {
+
+		dollyIn( getZoomScale() );
+
+		this.update();
+
+	};
+
 	this.saveState = function () {
 
 		scope.target0.copy( scope.target );
