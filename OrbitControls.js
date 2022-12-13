@@ -1005,6 +1005,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		if ( scope.enabled === false || scope.enableZoom === false || ( state !== STATE.NONE && state !== STATE.ROTATE ) ) return;
 
+		if ( scope.enableZoom === 'ctrl' && !event.ctrlKey ) return;
+
 		event.preventDefault();
 		event.stopPropagation();
 
